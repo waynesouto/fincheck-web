@@ -1,4 +1,4 @@
-export function Food() {
+export const Food = () => {
 	return (
 		<svg
 			width="44"
@@ -42,4 +42,4 @@ export function Food() {
 			/>
 		</svg>
 	);
-}
+};

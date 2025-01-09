@@ -1,4 +1,4 @@
-import { BankAccountType } from '@entities/enums'
+import { BankAccountType } from './enums'
 
 export type IBankAccount = {
 	id: string

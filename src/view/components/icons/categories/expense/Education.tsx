@@ -1,4 +1,4 @@
-export function Education() {
+export const Education = () => {
 	return (
 		<svg
 			width="44"
@@ -33,4 +33,4 @@ export function Education() {
 			/>
 		</svg>
 	);
-}
+};

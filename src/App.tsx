@@ -14,7 +14,7 @@ export const queryClient = new QueryClient({
 	},
 });
 
-export function App() {
+export const App = () => {
 	return (
 		<CookiesProvider>
 			<QueryClientProvider client={queryClient}>
@@ -27,4 +27,4 @@ export function App() {
 			</QueryClientProvider>
 		</CookiesProvider>
 	);
-}
+};

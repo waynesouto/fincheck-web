@@ -1,9 +1,9 @@
+import { JSX } from "react";
+import { BankAccountType } from "../../../../app/utils/models";
 import { CashIcon } from "./CashIcon";
 import { CheckingIcon } from "./CheckingIcon";
-import { InvestmentIcon } from "./InvestmentIcon";
 
-export const iconsMap = {
-  CHECKING: CheckingIcon,
-  INVESTMENT: InvestmentIcon,
-  CASH: CashIcon,
+export const iconsMap: Record<BankAccountType, () => JSX.Element> = {
+  checking: CheckingIcon,
+  savings: CashIcon
 };

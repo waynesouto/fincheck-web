@@ -1,4 +1,4 @@
-export function Travel() {
+export const Travel = () => {
 	return (
 		<svg
 			width="44"
@@ -56,4 +56,4 @@ export function Travel() {
 			/>
 		</svg>
 	);
-}
+};

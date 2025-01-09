@@ -1,11 +1,12 @@
+import { BankAccountType } from "../../../../app/utils/models";
 import { iconsMap } from "./iconsMap";
 
-interface BankAccountTypeIconProps {
-  type: keyof typeof iconsMap;
-}
+type BankAccountTypeIconProps = {
+	type: BankAccountType;
+};
 
-export function BankAccountTypeIcon({ type }: BankAccountTypeIconProps) {
-  const Icon = iconsMap[type];
+export const BankAccountTypeIcon = ({ type }: BankAccountTypeIconProps) => {
+	const Icon = iconsMap[type];
 
-  return <Icon />;
-}
+	return <Icon />;
+};

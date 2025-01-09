@@ -1,4 +1,4 @@
-export function Transport() {
+export const Transport = () => {
 	return (
 		<svg
 			width="44"
@@ -47,4 +47,4 @@ export function Transport() {
 			/>
 		</svg>
 	);
-}
+};

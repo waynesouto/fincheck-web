@@ -5,7 +5,7 @@ type CategoryIconProps = {
 	category?: string;
 };
 
-export function CategoryIcon({ type, category }: CategoryIconProps) {
+export const CategoryIcon = ({ type, category }: CategoryIconProps) => {
 	const Icon =
 		iconsMap[type][
 			(category as keyof (typeof iconsMap.expense | typeof iconsMap.income)) ??
@@ -13,4 +13,4 @@ export function CategoryIcon({ type, category }: CategoryIconProps) {
 		] ?? iconsMap[type].default;
 
 	return <Icon />;
-}
+};

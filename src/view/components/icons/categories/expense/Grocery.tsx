@@ -1,4 +1,4 @@
-export function Grocery() {
+export const Grocery = () => {
 	return (
 		<svg
 			width="44"
@@ -61,4 +61,4 @@ export function Grocery() {
 			/>
 		</svg>
 	);
-}
+};

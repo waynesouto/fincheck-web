@@ -1,4 +1,4 @@
-export function Home() {
+export const Home = () => {
 	return (
 		<svg
 			width="44"
@@ -47,4 +47,4 @@ export function Home() {
 			/>
 		</svg>
 	);
-}
+};

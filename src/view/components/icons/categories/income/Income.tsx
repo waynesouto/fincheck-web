@@ -1,4 +1,4 @@
-export function Income() {
+export const Income = () => {
 	return (
 		<svg
 			width="44"
@@ -56,4 +56,4 @@ export function Income() {
 			/>
 		</svg>
 	);
-}
+};

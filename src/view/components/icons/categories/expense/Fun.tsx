@@ -1,4 +1,4 @@
-export function Fun() {
+export const Fun = () => {
 	return (
 		<svg
 			width="44"
@@ -47,4 +47,4 @@ export function Fun() {
 			/>
 		</svg>
 	);
-}
+};

@@ -1,4 +1,4 @@
-import { TransactionType } from '@entities/enums'
+import { TransactionType } from './enums'
 
 export type ITransaction = {
 	id: string
