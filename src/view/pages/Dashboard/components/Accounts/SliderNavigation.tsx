@@ -1,7 +1,15 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { useSwiper } from "swiper/react";
 
-export const AccountSliderNavigation = () => {
+type SliderNavigationProps = {
+	isBeginning: boolean;
+	isEnd: boolean;
+};
+
+export const SliderNavigation = ({
+	isBeginning,
+	isEnd,
+}: SliderNavigationProps) => {
 	const swiper = useSwiper();
 
 	return (
@@ -9,12 +17,14 @@ export const AccountSliderNavigation = () => {
 			<button
 				className="py-3 pl-2.5 pr-3.5 rounded-full enabled:hover:bg-black/5 transition-colors disabled:opacity-40"
 				onClick={() => swiper.slidePrev()}
+				disabled={isBeginning}
 			>
 				<ChevronLeftIcon className="text-white w-6 h-6" />
 			</button>
 			<button
 				className="py-3 pl-2.5 pr-3.5 rounded-full enabled:hover:bg-black/5 transition-colors disabled:opacity-40"
 				onClick={() => swiper.slideNext()}
+				disabled={isEnd}
 			>
 				<ChevronRightIcon className="text-white w-6 h-6" />
 			</button>
