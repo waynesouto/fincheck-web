@@ -18,6 +18,6 @@ export const useAccountsController = () => {
 		areValuesVisible,
 		toggleValuesVisibility,
 		isLoading: false,
-		accounts: [{}]
+		accounts: []
 	}
 }
