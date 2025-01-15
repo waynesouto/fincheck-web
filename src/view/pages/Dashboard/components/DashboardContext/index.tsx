@@ -3,6 +3,9 @@ import { createContext, useCallback, useState } from "react";
 type DashboardContextValue = {
 	areValuesVisible: boolean;
 	toggleValuesVisibility(): void;
+	isNewAccountModalOpen: boolean;
+	openNewAccountModal(): void;
+	closeNewAccountModal(): void;
 };
 
 export const DashboardContext = createContext({} as DashboardContextValue);
@@ -15,6 +18,7 @@ export const DashboardProvider = ({
 	const [areValuesVisible, setAreValuesVisible] = useState(() => {
 		return localStorage.getItem("@fincheck-are-values-visible") === "true";
 	});
+	const [isNewAccountModalOpen, setIsNewAccountModalOpen] = useState(true); // TODO: pass to false
 
 	const toggleValuesVisibility = useCallback(() => {
 		setAreValuesVisible((prevState) => {
@@ -25,9 +29,23 @@ export const DashboardProvider = ({
 		});
 	}, []);
 
+	const openNewAccountModal = useCallback(() => {
+		setIsNewAccountModalOpen(true);
+	}, []);
+
+	const closeNewAccountModal = useCallback(() => {
+		setIsNewAccountModalOpen(false);
+	}, []);
+
 	return (
 		<DashboardContext.Provider
-			value={{ areValuesVisible, toggleValuesVisibility }}
+			value={{
+				areValuesVisible,
+				toggleValuesVisibility,
+				isNewAccountModalOpen,
+				openNewAccountModal,
+				closeNewAccountModal,
+			}}
 		>
 			{children}
 		</DashboardContext.Provider>
