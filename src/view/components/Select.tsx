@@ -43,7 +43,7 @@ export const Select = ({
 					<RdxSelect.Trigger
 						className={cn(
 							"bg-white w-full rounded-lg border border-gray-500 px-3 h-[52px] text-gray-800 transition-all outline-none focus:border-gray-800 text-left relative pt-4",
-							{ "!border-red-900": !!error },
+							error && "!border-red-900",
 							className
 						)}
 					>
@@ -61,6 +61,7 @@ export const Select = ({
 							<RdxSelect.Viewport className="p-2">
 								{options.map((option) => (
 									<RdxSelect.Item
+										key={option.value}
 										value={option.value}
 										className="p-2 text-gray-800 text-sm data-[state=checked]:font-bold outline-none data-[highlighted]:bg-gray-50 rounded-lg transition-colors"
 									>

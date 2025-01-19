@@ -49,7 +49,7 @@ export const ColorsDropdownInput = ({
 					<button
 						className={cn(
 							"bg-white w-full rounded-lg border border-gray-500 px-3 h-[52px] text-gray-700 transition-all outline-none focus:border-gray-800 text-left relative",
-							{ "!border-red-900": !!error },
+							error && "!border-red-900",
 							className
 						)}
 					>

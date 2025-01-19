@@ -20,7 +20,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 					id={inputId}
 					className={cn(
 						"bg-white w-full rounded-lg border border-gray-500 px-3 h-[52px] text-gray-800 pt-4 transition-all outline-none peer placeholder-shown:pt-0 focus:border-gray-800",
-						{ "!border-red-900": !!error },
+						error && "!border-red-900",
 						className
 					)}
 					placeholder=" "

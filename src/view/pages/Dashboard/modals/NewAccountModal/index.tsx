@@ -1,3 +1,4 @@
+import { Button } from "../../../../components/Button";
 import { ColorsDropdownInput } from "../../../../components/ColorsDropdownInput";
 import { Input } from "../../../../components/Input";
 import { InputCurrency } from "../../../../components/InputCurrency";
@@ -26,6 +27,7 @@ export const NewAccountModal = () => {
 
 				<div className="mt-10 flex flex-col gap-4">
 					<Input type="text" name="name" placeholder="Nome da conta" />
+
 					<Select
 						placeholder="Tipo"
 						options={[
@@ -39,8 +41,11 @@ export const NewAccountModal = () => {
 							},
 						]}
 					/>
+
 					<ColorsDropdownInput />
 				</div>
+
+				<Button className="w-full mt-6 text-sm">Criar</Button>
 			</form>
 		</Modal>
 	);

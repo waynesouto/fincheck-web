@@ -12,19 +12,11 @@ type DropdownMenuItemProps = {
 	onSelect?(): void;
 };
 
-export const DropdownMenuRoot = ({
-	children,
-}: {
-	children: React.ReactNode;
-}) => {
+const DropdownMenuRoot = ({ children }: { children: React.ReactNode }) => {
 	return <RdxDropdownMenu.Root>{children}</RdxDropdownMenu.Root>;
 };
 
-export const DropdownMenuTrigger = ({
-	children,
-}: {
-	children: React.ReactNode;
-}) => {
+const DropdownMenuTrigger = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<RdxDropdownMenu.Trigger className="outline-none" asChild>
 			{children}
@@ -32,7 +24,7 @@ export const DropdownMenuTrigger = ({
 	);
 };
 
-export const DropdownMenuContent = ({
+const DropdownMenuContent = ({
 	children,
 	className,
 }: DropdownMenuContentProps) => {
@@ -52,7 +44,7 @@ export const DropdownMenuContent = ({
 	);
 };
 
-export const DropdownMenuItem = ({
+const DropdownMenuItem = ({
 	children,
 	className,
 	onSelect,

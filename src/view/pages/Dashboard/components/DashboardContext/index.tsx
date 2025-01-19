@@ -1,11 +1,16 @@
 import { createContext, useCallback, useState } from "react";
+import { TransactionType } from "../../../../../app/utils/models";
 
 type DashboardContextValue = {
 	areValuesVisible: boolean;
-	toggleValuesVisibility(): void;
 	isNewAccountModalOpen: boolean;
+	isNewTransactionModalOpen: boolean;
+	newTransactionType: TransactionType | null;
+	toggleValuesVisibility(): void;
 	openNewAccountModal(): void;
 	closeNewAccountModal(): void;
+	openNewTransactionModal(type: TransactionType): void;
+	closeNewTransactionModal(): void;
 };
 
 export const DashboardContext = createContext({} as DashboardContextValue);
@@ -18,7 +23,11 @@ export const DashboardProvider = ({
 	const [areValuesVisible, setAreValuesVisible] = useState(() => {
 		return localStorage.getItem("@fincheck-are-values-visible") === "true";
 	});
-	const [isNewAccountModalOpen, setIsNewAccountModalOpen] = useState(true); // TODO: pass to false
+	const [isNewAccountModalOpen, setIsNewAccountModalOpen] = useState(false);
+	const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
+		useState(false);
+	const [newTransactionType, setNewTransactionType] =
+		useState<TransactionType | null>(null);
 
 	const toggleValuesVisibility = useCallback(() => {
 		setAreValuesVisible((prevState) => {
@@ -37,14 +46,28 @@ export const DashboardProvider = ({
 		setIsNewAccountModalOpen(false);
 	}, []);
 
+	const openNewTransactionModal = useCallback((type: TransactionType) => {
+		setNewTransactionType(type);
+		setIsNewTransactionModalOpen(true);
+	}, []);
+
+	const closeNewTransactionModal = useCallback(() => {
+		setNewTransactionType(null);
+		setIsNewTransactionModalOpen(false);
+	}, []);
+
 	return (
 		<DashboardContext.Provider
 			value={{
 				areValuesVisible,
-				toggleValuesVisibility,
 				isNewAccountModalOpen,
+				isNewTransactionModalOpen,
+				newTransactionType,
+				toggleValuesVisibility,
 				openNewAccountModal,
 				closeNewAccountModal,
+				openNewTransactionModal,
+				closeNewTransactionModal,
 			}}
 		>
 			{children}
