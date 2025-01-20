@@ -1,4 +1,4 @@
-import { BankAccountType } from "../../../../app/utils/models";
+import { BankAccountType } from "../../../../app/entities";
 import { iconsMap } from "./iconsMap";
 
 type BankAccountTypeIconProps = {

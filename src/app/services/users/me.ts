@@ -1,4 +1,4 @@
-import { IUser } from "../../utils/models";
+import { IUser } from "../../entities";
 import { api, ApiResponse } from "../api";
 
 type MeResponse = {

@@ -26,7 +26,7 @@ export const NewTransactionModal = () => {
 					<span className="text-gray-600 tracking[-0.5] text-sm">Valor</span>
 					<div className="flex items-center gap-2">
 						<span className="text-gray-600 tracking[-0.5] text-lg">R$</span>
-						<InputCurrency />
+						<InputCurrency onChange={() => {}} />
 					</div>
 				</div>
 

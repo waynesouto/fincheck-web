@@ -8,6 +8,8 @@ import { useState } from "react";
 type ColorsDropdownInputProps = {
 	error?: string;
 	className?: string;
+	value?: string;
+	onChange?(value: string): void;
 };
 
 type Color = {
@@ -35,11 +37,20 @@ const colors: Color[] = [
 export const ColorsDropdownInput = ({
 	error,
 	className,
+	value,
+	onChange,
 }: ColorsDropdownInputProps) => {
-	const [selectedColor, setSelectedColor] = useState<Color | null>(null);
+	const [selectedColor, setSelectedColor] = useState<Color | null>(() => {
+		if (!value) {
+			return null;
+		}
+
+		return colors.find((c) => c.color === value) ?? null;
+	});
 
 	const handleSelect = (color: Color) => {
 		setSelectedColor(color);
+		onChange?.(color.color);
 	};
 
 	return (

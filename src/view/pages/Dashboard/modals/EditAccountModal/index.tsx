@@ -5,25 +5,25 @@ import { Input } from "../../../../components/Input";
 import { InputCurrency } from "../../../../components/InputCurrency";
 import { Modal } from "../../../../components/Modal";
 import { Select } from "../../../../components/Select";
-import { useNewAccountModalController } from "./useNewAccountModalController";
 import { BankAccountTypeEnum } from "../../../../../app/entities";
+import { useEditAccountModalController } from "./useEditAccountModalController";
 
-export const NewAccountModal = () => {
+export const EditAccountModal = () => {
 	const {
-		isNewAccountModalOpen,
-		closeNewAccountModal,
+		isEditAccountModalOpen,
+		closeEditAccountModal,
 		errors,
 		handleSubmit,
 		register,
 		control,
 		isPending,
-	} = useNewAccountModalController();
+	} = useEditAccountModalController();
 
 	return (
 		<Modal
-			title="Nova conta"
-			open={isNewAccountModalOpen}
-			onClose={closeNewAccountModal}
+			title="Editar conta"
+			open={isEditAccountModalOpen}
+			onClose={closeEditAccountModal}
 		>
 			<form onSubmit={handleSubmit}>
 				<div>
