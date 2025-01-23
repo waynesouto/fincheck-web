@@ -8,7 +8,7 @@ const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    return Promise.reject(error.response?.data?.body ?? "Erro desconhecido.");
+    return Promise.reject(error.response?.data?.body ?? "Erro desconhecido");
   }
 );
 

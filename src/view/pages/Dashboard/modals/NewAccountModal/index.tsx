@@ -97,7 +97,7 @@ export const NewAccountModal = () => {
 				<Button
 					type="submit"
 					className="w-full mt-6 text-sm"
-					isPending={isPending}
+					isLoading={isPending}
 				>
 					Criar
 				</Button>

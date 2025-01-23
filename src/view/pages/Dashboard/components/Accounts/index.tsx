@@ -5,10 +5,10 @@ import { AccountCard } from "./AccountCard";
 import "swiper/css";
 import { SliderNavigation } from "./SliderNavigation";
 import { useAccountsController } from "./useAccountsController";
-import { formatCurrency } from "../../../../../app/utils/formatCurrency";
 import { cn } from "../../../../../app/utils/cn";
 import { Spinner } from "../../../../components/Spinner";
 import { PlusIcon } from "@radix-ui/react-icons";
+import { formatCurrency } from "../../../../../app/utils/formatCurrency";
 
 export const Accounts = () => {
 	const {

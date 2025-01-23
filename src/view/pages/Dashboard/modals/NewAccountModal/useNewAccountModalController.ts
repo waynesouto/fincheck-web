@@ -2,16 +2,15 @@ import { z } from "zod"
 import { useDashboard } from "../../components/DashboardContext/useDashboard"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { BankAccountTypeEnum } from "../../../../../app/entities"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { CreateBankAccountParams } from "../../../../../app/services/bankAccounts/create"
 import { bankAccountsService } from "../../../../../app/services/bankAccounts"
 import { notification } from "../../../../../app/utils/notification"
 
 const schema = z.object({
-	initialBalance: z.number().nonnegative('Saldo inicial é obrigatório'),
+	initialBalance: z.number(),
 	name: z.string().nonempty('Nome da conta é obrigatório'),
-	type: z.nativeEnum(BankAccountTypeEnum),
+	type: z.enum(['checking', 'savings']),
 	color: z.string().nonempty('Cor é obrigatória')
 })
 

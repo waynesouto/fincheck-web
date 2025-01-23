@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 	const { isError, isFetching, isSuccess } = useQuery({
 		queryKey: ["users", "me"],
-		queryFn: () => usersService.me(),
+		queryFn: usersService.me,
 		enabled: loggedIn,
 		staleTime: Infinity,
 	});
