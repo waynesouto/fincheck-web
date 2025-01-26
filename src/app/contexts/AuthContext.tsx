@@ -43,12 +43,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	const logout = useCallback(async () => {
 		try {
 			await mutateAsync();
+			setLoggedIn(false);
+			// remove query from cache
+			queryClient.removeQueries({ queryKey: ["users", "me"], exact: true });
 		} catch (err) {
 			notification(err as string, "error");
 		}
-		// remove query from cache
-		queryClient.removeQueries({ queryKey: ["users", "me"], exact: true });
-		setLoggedIn(false);
 	}, [mutateAsync]);
 
 	useEffect(() => {

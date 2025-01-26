@@ -4,6 +4,7 @@ import { Router } from "./Router";
 import { AuthProvider } from "./app/contexts/AuthContext";
 import { CookiesProvider } from "react-cookie";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ThemeProvider } from "./app/contexts/ThemeContext";
 
 export const queryClient = new QueryClient({
 	defaultOptions: {
@@ -16,15 +17,17 @@ export const queryClient = new QueryClient({
 
 export const App = () => {
 	return (
-		<CookiesProvider>
-			<QueryClientProvider client={queryClient}>
-				<AuthProvider>
-					<Router />
-					<Toaster />
-				</AuthProvider>
+		<ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+			<CookiesProvider>
+				<QueryClientProvider client={queryClient}>
+					<AuthProvider>
+						<Router />
+						<Toaster />
+					</AuthProvider>
 
-				<ReactQueryDevtools buttonPosition="bottom-left" />
-			</QueryClientProvider>
-		</CookiesProvider>
+					<ReactQueryDevtools buttonPosition="bottom-left" />
+				</QueryClientProvider>
+			</CookiesProvider>
+		</ThemeProvider>
 	);
 };
