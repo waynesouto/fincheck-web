@@ -34,12 +34,7 @@ const colors: Color[] = [
 	{ color: "#212529", bg: "#F8F9FA" },
 ];
 
-export const ColorsDropdownInput = ({
-	error,
-	className,
-	value,
-	onChange,
-}: ColorsDropdownInputProps) => {
+export const ColorsDropdownInput = ({ error, className, value, onChange }: ColorsDropdownInputProps) => {
 	const [selectedColor, setSelectedColor] = useState<Color | null>(() => {
 		if (!value) {
 			return null;
@@ -61,27 +56,20 @@ export const ColorsDropdownInput = ({
 						className={cn(
 							"bg-white w-full rounded-lg border border-gray-500 px-3 h-[52px] text-gray-700 transition-all outline-none focus:border-gray-800 text-left relative",
 							error && "!border-red-900",
-							className
+							className,
 						)}
 					>
 						Cor
 						<div className="absolute right-3 top-1/2 -translate-y-1/2">
-							{!selectedColor && (
-								<ChevronDownIcon className="h-6 w-6 text-gray-800" />
-							)}
-							{selectedColor && (
-								<ColorIcon color={selectedColor.color} bg={selectedColor.bg} />
-							)}
+							{!selectedColor && <ChevronDownIcon className="h-6 w-6 text-gray-800" />}
+							{selectedColor && <ColorIcon color={selectedColor.color} bg={selectedColor.bg} />}
 						</div>
 					</button>
 				</DropdownMenu.Trigger>
 
 				<DropdownMenu.Content className="grid grid-cols-4">
 					{colors.map((color) => (
-						<DropdownMenu.Item
-							key={color.color}
-							onSelect={() => handleSelect(color)}
-						>
+						<DropdownMenu.Item key={color.color} onSelect={() => handleSelect(color)}>
 							<ColorIcon color={color.color} bg={color.bg} />
 						</DropdownMenu.Item>
 					))}

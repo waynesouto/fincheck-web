@@ -5,13 +5,13 @@ import { ListTransactionsRequest } from "../services/transactions/list";
 export const useTransactions = (params: ListTransactionsRequest) => {
 	const { data, isFetching, isLoading, refetch } = useQuery({
 		queryKey: ["transactions"],
-		queryFn: () => transactionsService.list(params)
+		queryFn: () => transactionsService.list(params),
 	});
 
 	return {
 		transactions: data === undefined ? [] : data.transactions,
 		isFetching,
 		isInitialLoading: isLoading,
-		refetch
-	}
-}
+		refetch,
+	};
+};

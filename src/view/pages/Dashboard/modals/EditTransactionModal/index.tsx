@@ -16,11 +16,7 @@ type EditTransactionModalProps = {
 	onClose(): void;
 };
 
-export const EditTransactionModal = ({
-	transaction,
-	open,
-	onClose,
-}: EditTransactionModalProps) => {
+export const EditTransactionModal = ({ transaction, open, onClose }: EditTransactionModalProps) => {
 	const {
 		control,
 		errors,
@@ -40,9 +36,7 @@ export const EditTransactionModal = ({
 	if (isDeleteModalOpen) {
 		return (
 			<ConfirmDeleteModal
-				title={`Tem certeza que deseja excluir esta ${
-					isExpense ? "despesa" : "receita"
-				}`}
+				title={`Tem certeza que deseja excluir esta ${isExpense ? "despesa" : "receita"}`}
 				onClose={handleCloseDeleteModal}
 				onConfirm={handleDeleteTransaction}
 				isLoading={isLoadingDelete}
@@ -71,11 +65,7 @@ export const EditTransactionModal = ({
 							name="value"
 							defaultValue={0.0}
 							render={({ field: { onChange, value } }) => (
-								<InputCurrency
-									error={errors.value?.message}
-									onChange={onChange}
-									value={value}
-								/>
+								<InputCurrency error={errors.value?.message} onChange={onChange} value={value} />
 							)}
 						/>
 					</div>
@@ -128,11 +118,7 @@ export const EditTransactionModal = ({
 						name="date"
 						defaultValue={new Date()}
 						render={({ field: { value, onChange } }) => (
-							<DatePickerInput
-								error={errors.date?.message}
-								value={value}
-								onChange={onChange}
-							/>
+							<DatePickerInput error={errors.date?.message} value={value} onChange={onChange} />
 						)}
 					/>
 				</div>

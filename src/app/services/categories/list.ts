@@ -2,14 +2,14 @@ import { ICategory } from "../../entities";
 import { api, ApiResponse } from "../api";
 
 export type ListCategoriesResponse = {
-	categories: ICategory[]
-}
+	categories: ICategory[];
+};
 
 export const list = async () => {
-  const { data } = await api.get<ApiResponse<ListCategoriesResponse>>("/categories");
-	if (data.process === 'failed') {
-		throw new Error(data.body)
+	const { data } = await api.get<ApiResponse<ListCategoriesResponse>>("/categories");
+	if (data.process === "failed") {
+		throw new Error(data.body);
 	}
 
-  return data.body;
+	return data.body;
 };

@@ -8,41 +8,38 @@ import { notification } from "../../../app/utils/notification";
 import { useAuth } from "../../../app/hooks/useAuth";
 
 const schema = z.object({
-  name: z.string().min(2, "Nome é obrigatório"),
-  email: z
-    .string()
-    .min(1, "E-mail é obrigatório")
-    .email("Informe um e-mail válido"),
-  password: z.string().min(8, "Senha deve conter pelo menos 8 dígitos"),
+	name: z.string().min(2, "Nome é obrigatório"),
+	email: z.string().min(1, "E-mail é obrigatório").email("Informe um e-mail válido"),
+	password: z.string().min(8, "Senha deve conter pelo menos 8 dígitos"),
 });
 
-type FormData = z.infer<typeof schema>
+type FormData = z.infer<typeof schema>;
 
 export const useRegisterController = () => {
-  const {
-    register,
-    handleSubmit: hookFormSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
-  });
+	const {
+		register,
+		handleSubmit: hookFormSubmit,
+		formState: { errors },
+	} = useForm<FormData>({
+		resolver: zodResolver(schema),
+	});
 
-  const { isPending, mutateAsync } = useMutation({
-    mutationFn: (data: RegisterParams) => {
-      return authService.register(data);
-    },
-  });
+	const { isPending, mutateAsync } = useMutation({
+		mutationFn: (data: RegisterParams) => {
+			return authService.register(data);
+		},
+	});
 
-	const { login } = useAuth()
+	const { login } = useAuth();
 
-  const handleSubmit = hookFormSubmit(async (data) => {
-    try {
+	const handleSubmit = hookFormSubmit(async (data) => {
+		try {
 			await mutateAsync(data);
-			login()
-    } catch (err) {
-      notification(err as string, "error");
-    }
-  });
+			login();
+		} catch (err) {
+			notification(err as string, "error");
+		}
+	});
 
-  return { register, handleSubmit, errors, isLoading: isPending };
-}
+	return { register, handleSubmit, errors, isLoading: isPending };
+};

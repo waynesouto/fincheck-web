@@ -1,12 +1,6 @@
 export const CheckingIcon = () => {
 	return (
-		<svg
-			width="44"
-			height="44"
-			viewBox="0 0 44 44"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
+		<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect x="1" y="1" width="42" height="42" rx="21" fill="#E9ECEF" />
 			<path
 				fillRule="evenodd"
@@ -17,13 +11,7 @@ export const CheckingIcon = () => {
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-			<path
-				d="M13 19.834H31"
-				stroke="#495057"
-				strokeWidth="1.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
+			<path d="M13 19.834H31" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 			<path
 				d="M17.1768 25.1699H20.1453"
 				stroke="#495057"
@@ -31,15 +19,7 @@ export const CheckingIcon = () => {
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-			<rect
-				x="1"
-				y="1"
-				width="42"
-				height="42"
-				rx="21"
-				stroke="white"
-				strokeWidth="2"
-			/>
+			<rect x="1" y="1" width="42" height="42" rx="21" stroke="white" strokeWidth="2" />
 		</svg>
 	);
 };

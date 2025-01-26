@@ -19,11 +19,8 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export const useEditTransactionModalController = (
-	transaction: ITransaction | null,
-	onClose: () => void
-) => {
-		const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+export const useEditTransactionModalController = (transaction: ITransaction | null, onClose: () => void) => {
+	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
 	const {
 		register,
@@ -38,61 +35,60 @@ export const useEditTransactionModalController = (
 			date: transaction?.date !== undefined ? new Date(transaction?.date) : undefined,
 			description: transaction?.description,
 			value: transaction?.value,
-		}
+		},
 	});
 
-	const {accounts} = useBankAccounts()
-	const {categories} = useCategories()
+	const { accounts } = useBankAccounts();
+	const { categories } = useCategories();
 
 	const queryClient = useQueryClient();
-	const {isPending: isLoadingUpdate, mutateAsync: updateTransaction} = useMutation({
-		mutationFn: transactionsService.update
-	})
-	const {isPending: isLoadingDelete, mutateAsync: removeTransaction} = useMutation({
-		mutationFn: transactionsService.remove
-	})
+	const { isPending: isLoadingUpdate, mutateAsync: updateTransaction } = useMutation({
+		mutationFn: transactionsService.update,
+	});
+	const { isPending: isLoadingDelete, mutateAsync: removeTransaction } = useMutation({
+		mutationFn: transactionsService.remove,
+	});
 
 	const handleSubmit = hookFormSubmit(async (data) => {
 		try {
-					await updateTransaction({
-						id: transaction!.id,
-						data
-					});
+			await updateTransaction({
+				id: transaction!.id,
+				data,
+			});
 
-					queryClient.invalidateQueries({queryKey: ['transactions']})
-					queryClient.invalidateQueries({queryKey: ['bankAccounts']})
-					notification(`${transaction?.type === 'income' ? 'Receita' : "Despesa"} editada com sucesso`, 'success')
-					onClose()
-				} catch (err) {
-					notification("Erro ao salvar as alterações da transação" + err, "error");
-				}
+			queryClient.invalidateQueries({ queryKey: ["transactions"] });
+			queryClient.invalidateQueries({ queryKey: ["bankAccounts"] });
+			notification(`${transaction?.type === "income" ? "Receita" : "Despesa"} editada com sucesso`, "success");
+			onClose();
+		} catch (err) {
+			notification("Erro ao salvar as alterações da transação" + err, "error");
+		}
 	});
 
-	const handleDeleteTransaction = async() => {
+	const handleDeleteTransaction = async () => {
 		try {
-			await removeTransaction({id: transaction!.id})
+			await removeTransaction({ id: transaction!.id });
 
-			queryClient.invalidateQueries({queryKey: ['transactions']})
-			queryClient.invalidateQueries({queryKey: ['bankAccounts']})
-			notification(`${transaction?.type === 'income' ? 'Receita' : "Despesa"} deletada com sucesso`, 'success')
-			onClose()
+			queryClient.invalidateQueries({ queryKey: ["transactions"] });
+			queryClient.invalidateQueries({ queryKey: ["bankAccounts"] });
+			notification(`${transaction?.type === "income" ? "Receita" : "Despesa"} deletada com sucesso`, "success");
+			onClose();
 		} catch (err) {
-			notification("Erro ao deletar transação" + err, "error")
+			notification("Erro ao deletar transação" + err, "error");
 		}
-	}
+	};
 
 	const filterCategories = useMemo(() => {
-		return categories.filter((category) => category.type === transaction?.type)
-	}, [categories, transaction?.type])
-
+		return categories.filter((category) => category.type === transaction?.type);
+	}, [categories, transaction?.type]);
 
 	const handleOpenDeleteModal = () => {
-		setIsDeleteModalOpen(true)
-	}
+		setIsDeleteModalOpen(true);
+	};
 
 	const handleCloseDeleteModal = () => {
-		setIsDeleteModalOpen(false)
-	}
+		setIsDeleteModalOpen(false);
+	};
 
 	return {
 		register,
@@ -106,6 +102,6 @@ export const useEditTransactionModalController = (
 		handleSubmit,
 		handleOpenDeleteModal,
 		handleCloseDeleteModal,
-		handleDeleteTransaction
+		handleDeleteTransaction,
 	};
 };

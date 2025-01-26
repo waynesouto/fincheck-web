@@ -36,19 +36,11 @@ export const Accounts = () => {
 						<span className="tracking-[-0.5px] text-white">Saldo total</span>
 
 						<div className="flex items-center gap-2">
-							<strong
-								className={cn(
-									"text-2xl tracking-[-1px] text-white",
-									!areValuesVisible && "blur-md"
-								)}
-							>
+							<strong className={cn("text-2xl tracking-[-1px] text-white", !areValuesVisible && "blur-md")}>
 								{formatCurrency(currentBalance)}
 							</strong>
 
-							<button
-								className="w-8 h-8 flex items-center justify-center"
-								onClick={toggleValuesVisibility}
-							>
+							<button className="w-8 h-8 flex items-center justify-center" onClick={toggleValuesVisibility}>
 								<EyeIcon open={!areValuesVisible} />
 							</button>
 						</div>
@@ -58,9 +50,7 @@ export const Accounts = () => {
 						{accounts.length === 0 && (
 							<>
 								<div className="mb-4">
-									<strong className="text-white tracking-[-1px] text-lg">
-										Minhas contas
-									</strong>
+									<strong className="text-white tracking-[-1px] text-lg">Minhas contas</strong>
 								</div>
 
 								<button
@@ -70,9 +60,7 @@ export const Accounts = () => {
 									<div className="w-11 h-11 rounded-full border border-dashed border-white flex items-center justify-center">
 										<PlusIcon className="w-6 h-6" />
 									</div>
-									<span className="font-medium tracking-[-0.5px] block w-32 text-center">
-										Cadastre uma nova conta
-									</span>
+									<span className="font-medium tracking-[-0.5px] block w-32 text-center">Cadastre uma nova conta</span>
 								</button>
 							</>
 						)}
@@ -88,13 +76,8 @@ export const Accounts = () => {
 										})
 									}
 								>
-									<div
-										slot="container-start"
-										className="flex items-center justify-between mb-4"
-									>
-										<strong className="text-white tracking-[-1px] text-lg">
-											Minhas contas
-										</strong>
+									<div slot="container-start" className="flex items-center justify-between mb-4">
+										<strong className="text-white tracking-[-1px] text-lg">Minhas contas</strong>
 
 										<SliderNavigation {...slider} />
 									</div>

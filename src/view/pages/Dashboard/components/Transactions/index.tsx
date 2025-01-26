@@ -54,10 +54,7 @@ export const Transactions = () => {
 
 					<header>
 						<div className="flex items-center justify-between">
-							<TransactionTypeDropdown
-								onSelect={handleChangeFilter("type")}
-								selectedType={filters.type}
-							/>
+							<TransactionTypeDropdown onSelect={handleChangeFilter("type")} selectedType={filters.type} />
 
 							<button onClick={handleOpenFiltersModal}>
 								<FilterIcon />
@@ -79,13 +76,7 @@ export const Transactions = () => {
 								<SliderNavigation isBeginning={false} isEnd={false} />
 								{MONTHS.map((month, index) => (
 									<SwiperSlide key={month}>
-										{({ isActive }) => (
-											<SliderOption
-												isActive={isActive}
-												month={month}
-												index={index}
-											/>
-										)}
+										{({ isActive }) => <SliderOption isActive={isActive} month={month} index={index} />}
 									</SwiperSlide>
 								))}
 							</Swiper>
@@ -101,13 +92,8 @@ export const Transactions = () => {
 
 						{!hasTransactions && !isLoading && (
 							<div className="flex items-center flex-col h-full justify-center">
-								<img
-									src={emptyStateImage}
-									alt="Não encontramos nenhuma transação"
-								/>
-								<p className="text-gray-700">
-									Não encontramos nenhuma transação
-								</p>
+								<img src={emptyStateImage} alt="Não encontramos nenhuma transação" />
+								<p className="text-gray-700">Não encontramos nenhuma transação</p>
 							</div>
 						)}
 
@@ -129,32 +115,22 @@ export const Transactions = () => {
 										onClick={() => handleOpenEditModal(transaction)}
 									>
 										<div className="flex-1 flex items-center gap-3">
-											<CategoryIcon
-												type={transaction.type}
-												category={transaction.category?.icon}
-											/>
+											<CategoryIcon type={transaction.type} category={transaction.category?.icon} />
 
 											<div>
-												<strong className="font-bold tracking-[-0.5px] block">
-													{transaction.description}
-												</strong>
-												<span className="text-xm text-gray-600">
-													{formatDate(new Date(transaction.date))}
-												</span>
+												<strong className="font-bold tracking-[-0.5px] block">{transaction.description}</strong>
+												<span className="text-xm text-gray-600">{formatDate(new Date(transaction.date))}</span>
 											</div>
 										</div>
 
 										<span
 											className={cn(
 												"tracking-[-0.5px] font-medium",
-												transaction.type === "expense"
-													? "text-red-800"
-													: "text-green-800",
-												!areValuesVisible && "blur-sm"
+												transaction.type === "expense" ? "text-red-800" : "text-green-800",
+												!areValuesVisible && "blur-sm",
 											)}
 										>
-											{transaction.type === "expense" ? "-" : "+"}{" "}
-											{formatCurrency(transaction.value)}
+											{transaction.type === "expense" ? "-" : "+"} {formatCurrency(transaction.value)}
 										</span>
 									</div>
 								))}

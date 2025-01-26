@@ -51,9 +51,7 @@ export const EditAccountModal = () => {
 		>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<span className="text-gray-600 tracking[-0.5] text-sm">
-						Saldo inicial
-					</span>
+					<span className="text-gray-600 tracking[-0.5] text-sm">Saldo inicial</span>
 					<div className="flex items-center gap-2">
 						<span className="text-gray-600 tracking[-0.5] text-lg">R$</span>
 
@@ -62,23 +60,14 @@ export const EditAccountModal = () => {
 							name="initialBalance"
 							defaultValue={0.0}
 							render={({ field: { onChange, value } }) => (
-								<InputCurrency
-									error={errors.initialBalance?.message}
-									onChange={onChange}
-									value={value}
-								/>
+								<InputCurrency error={errors.initialBalance?.message} onChange={onChange} value={value} />
 							)}
 						/>
 					</div>
 				</div>
 
 				<div className="mt-10 flex flex-col gap-4">
-					<Input
-						type="text"
-						placeholder="Nome da conta"
-						error={errors.name?.message}
-						{...register("name")}
-					/>
+					<Input type="text" placeholder="Nome da conta" error={errors.name?.message} {...register("name")} />
 
 					<Controller
 						control={control}
@@ -109,20 +98,12 @@ export const EditAccountModal = () => {
 						name="color"
 						defaultValue="#40C057"
 						render={({ field: { onChange, value } }) => (
-							<ColorsDropdownInput
-								onChange={onChange}
-								error={errors.color?.message}
-								value={value}
-							/>
+							<ColorsDropdownInput onChange={onChange} error={errors.color?.message} value={value} />
 						)}
 					/>
 				</div>
 
-				<Button
-					type="submit"
-					className="w-full mt-6 text-sm"
-					isLoading={isLoadingUpdate}
-				>
+				<Button type="submit" className="w-full mt-6 text-sm" isLoading={isLoadingUpdate}>
 					Salvar
 				</Button>
 			</form>

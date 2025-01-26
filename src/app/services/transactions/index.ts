@@ -7,5 +7,5 @@ export const transactionsService = {
 	create,
 	list,
 	update,
-	remove
-}
+	remove,
+};

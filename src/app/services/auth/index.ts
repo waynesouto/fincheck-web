@@ -4,8 +4,8 @@ import { refresh } from "./refresh";
 import { register } from "./register";
 
 export const authService = {
-  login,
-  register,
+	login,
+	register,
 	logout,
-	refresh
+	refresh,
 };

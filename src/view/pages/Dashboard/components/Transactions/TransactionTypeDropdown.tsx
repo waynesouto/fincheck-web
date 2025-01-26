@@ -10,10 +10,7 @@ type TransactionTypeDropdownProps = {
 	selectedType?: TransactionType;
 };
 
-export const TransactionTypeDropdown = ({
-	onSelect,
-	selectedType,
-}: TransactionTypeDropdownProps) => {
+export const TransactionTypeDropdown = ({ onSelect, selectedType }: TransactionTypeDropdownProps) => {
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger>
@@ -33,23 +30,14 @@ export const TransactionTypeDropdown = ({
 			</DropdownMenu.Trigger>
 
 			<DropdownMenu.Content className="w-[279px]">
-				<DropdownMenu.Item
-					className="gap-2"
-					onSelect={() => onSelect("income")}
-				>
+				<DropdownMenu.Item className="gap-2" onSelect={() => onSelect("income")}>
 					<IncomeIcon /> Receitas
 				</DropdownMenu.Item>
-				<DropdownMenu.Item
-					className="gap-2"
-					onSelect={() => onSelect("expense")}
-				>
+				<DropdownMenu.Item className="gap-2" onSelect={() => onSelect("expense")}>
 					<ExpensesIcon /> Despesas
 				</DropdownMenu.Item>
 
-				<DropdownMenu.Item
-					className="gap-2"
-					onSelect={() => onSelect(undefined)}
-				>
+				<DropdownMenu.Item className="gap-2" onSelect={() => onSelect(undefined)}>
 					<TransactionsIcon /> Transações
 				</DropdownMenu.Item>
 			</DropdownMenu.Content>

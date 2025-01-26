@@ -21,8 +21,7 @@ export const AuthContext = createContext({} as AuthContextValue);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	const [cookie] = useCookies([cookiesKeys.IS_AUTHENTICATED]);
 	const [loggedIn, setLoggedIn] = useState<boolean>(() => {
-		const isAuthenticated: boolean | undefined =
-			cookie[cookiesKeys.IS_AUTHENTICATED];
+		const isAuthenticated: boolean | undefined = cookie[cookiesKeys.IS_AUTHENTICATED];
 
 		return !!isAuthenticated;
 	});

@@ -1,13 +1,13 @@
-import { BankAccountType } from './enums'
+import { BankAccountType } from "./enums";
 
 export type IBankAccount = {
-	id: string
-	userId: string
-	name: string
-	initialBalance: number
-	type: BankAccountType
-	color: string
-	isActive: boolean
-	createdAt: Date
-	updatedAt: Date
-}
+	id: string;
+	userId: string;
+	name: string;
+	initialBalance: number;
+	type: BankAccountType;
+	color: string;
+	isActive: boolean;
+	createdAt: Date;
+	updatedAt: Date;
+};

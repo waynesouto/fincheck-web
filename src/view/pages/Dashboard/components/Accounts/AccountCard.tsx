@@ -22,18 +22,11 @@ export const AccountCard = ({ data }: AccountCardProps) => {
 			<div>
 				<BankAccountTypeIcon type={type} />
 
-				<span className="text-gray-800 font-medium tracking-[-0.5px] mt-4 block">
-					{name}
-				</span>
+				<span className="text-gray-800 font-medium tracking-[-0.5px] mt-4 block">{name}</span>
 			</div>
 
 			<div>
-				<span
-					className={cn(
-						"text-gray-800 font-medium tracking-[-0.5px] block",
-						!areValuesVisible && "blur-sm"
-					)}
-				>
+				<span className={cn("text-gray-800 font-medium tracking-[-0.5px] block", !areValuesVisible && "blur-sm")}>
 					{formatCurrency(currentBalance)}
 				</span>
 				<small className="text-gray-600 text-sm">Saldo atual</small>

@@ -16,10 +16,7 @@ export const UserMenu = () => {
 			</DropdownMenu.Trigger>
 
 			<DropdownMenu.Content className="w-32">
-				<DropdownMenu.Item
-					onSelect={logout}
-					className="flex items-center justify-between"
-				>
+				<DropdownMenu.Item onSelect={logout} className="flex items-center justify-between">
 					Sair
 					<ExitIcon className="w-4 h-4" />
 				</DropdownMenu.Item>

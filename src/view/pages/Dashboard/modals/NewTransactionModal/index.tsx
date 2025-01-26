@@ -38,11 +38,7 @@ export const NewTransactionModal = () => {
 							name="value"
 							defaultValue={0.0}
 							render={({ field: { onChange, value } }) => (
-								<InputCurrency
-									error={errors.value?.message}
-									onChange={onChange}
-									value={value}
-								/>
+								<InputCurrency error={errors.value?.message} onChange={onChange} value={value} />
 							)}
 						/>
 					</div>
@@ -95,11 +91,7 @@ export const NewTransactionModal = () => {
 						name="date"
 						defaultValue={new Date()}
 						render={({ field: { value, onChange } }) => (
-							<DatePickerInput
-								error={errors.date?.message}
-								value={value}
-								onChange={onChange}
-							/>
+							<DatePickerInput error={errors.date?.message} value={value} onChange={onChange} />
 						)}
 					/>
 				</div>
