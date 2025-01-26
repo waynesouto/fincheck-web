@@ -12,7 +12,7 @@ import { notification } from "../../../../../app/utils/notification";
 const schema = z.object({
 	value: z.number().nonnegative("Informe o valor"),
 	description: z.string().nonempty("Informe a descrição"),
-	categoryId: z.string().nonempty("Informe a categoria"),
+	categoryId: z.string().nullable(),
 	bankAccountId: z.string().nonempty("Informe a conta bancária"),
 	date: z.date(),
 });
@@ -50,6 +50,7 @@ export const useNewTransactionModalController = () => {
 					});
 
 					queryClient.invalidateQueries({queryKey: ['transactions']})
+					queryClient.invalidateQueries({queryKey: ['bankAccounts']})
 					notification(`${newTransactionType === 'income' ? 'Receita' : "Despesa"} cadastrada com sucesso`, 'success')
 					closeNewTransactionModal()
 					reset()
@@ -73,6 +74,6 @@ export const useNewTransactionModalController = () => {
 		handleSubmit,
 		accounts,
 		categories: filterCategories,
-		isPending
+		isLoading: isPending
 	};
 };

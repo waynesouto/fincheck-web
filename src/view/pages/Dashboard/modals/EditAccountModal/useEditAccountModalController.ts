@@ -5,9 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { bankAccountsService } from "../../../../../app/services/bankAccounts"
 import { notification } from "../../../../../app/utils/notification"
-import { UpdateBankAccountParams } from "../../../../../app/services/bankAccounts/update"
 import { useState } from "react"
-import { RemoveBankAccountParams } from "../../../../../app/services/bankAccounts/remove"
 
 const schema = z.object({
 	initialBalance: z.number().nonnegative('Saldo inicial é obrigatório'),
@@ -39,10 +37,10 @@ export const useEditAccountModalController = () => {
 
 		const queryClient = useQueryClient();
 		const {isPending: isLoadingUpdate, mutateAsync: updateAccount} = useMutation({
-			mutationFn: (data: UpdateBankAccountParams) => bankAccountsService.update(data)
+			mutationFn: bankAccountsService.update
 		});
 		const {isPending: isLoadingDelete, mutateAsync: removeAccount} = useMutation({
-			mutationFn: (data: RemoveBankAccountParams) => bankAccountsService.remove(data)
+			mutationFn: bankAccountsService.remove
 		});
 
 		const handleSubmit = hookFormSubmit(async (data) => {

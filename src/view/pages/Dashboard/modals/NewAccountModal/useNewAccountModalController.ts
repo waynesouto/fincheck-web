@@ -47,5 +47,5 @@ export const useNewAccountModalController = () => {
 		}
 	})
 
-	return {isNewAccountModalOpen, closeNewAccountModal, register, errors, handleSubmit, control, isPending}
+	return {isNewAccountModalOpen, closeNewAccountModal, register, errors, handleSubmit, control, isLoading: isPending}
 }

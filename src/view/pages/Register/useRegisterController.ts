@@ -44,5 +44,5 @@ export const useRegisterController = () => {
     }
   });
 
-  return { register, handleSubmit, errors, isPending };
+  return { register, handleSubmit, errors, isLoading: isPending };
 }

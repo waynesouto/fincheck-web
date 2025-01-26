@@ -43,5 +43,5 @@ export const useLoginController = () => {
     }
   });
 
-  return { register, handleSubmit, errors, isPending };
+  return { register, handleSubmit, errors, isLoading: isPending };
 }

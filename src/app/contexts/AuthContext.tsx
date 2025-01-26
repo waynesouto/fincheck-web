@@ -7,9 +7,11 @@ import { authService } from "../services/auth";
 import { notification } from "../utils/notification";
 import { PageLoader } from "../../view/components/PageLoader";
 import { queryClient } from "../../App";
+import { IUser } from "../entities";
 
 type AuthContextValue = {
 	loggedIn: boolean;
+	user?: IUser;
 	login(): void;
 	logout(): void;
 };
@@ -25,7 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		return !!isAuthenticated;
 	});
 
-	const { isError, isFetching, isSuccess } = useQuery({
+	const { isError, isFetching, isSuccess, data } = useQuery({
 		queryKey: ["users", "me"],
 		queryFn: usersService.me,
 		enabled: loggedIn,
@@ -66,6 +68,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		<AuthContext.Provider
 			value={{
 				loggedIn: isSuccess && loggedIn,
+				user: data?.user,
 				login,
 				logout,
 			}}
