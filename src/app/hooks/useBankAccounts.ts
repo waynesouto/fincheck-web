@@ -5,10 +5,11 @@ export const useBankAccounts = () => {
 	const { data, isFetching } = useQuery({
 		queryKey: ["bankAccounts"],
 		queryFn: bankAccountsService.list,
+		staleTime: Infinity,
 	});
 
 	return {
 		accounts: data === undefined ? [] : data.bankAccounts,
-		isFetching
-	}
-}
+		isFetching,
+	};
+};

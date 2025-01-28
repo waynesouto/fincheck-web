@@ -9,27 +9,14 @@ import { useNewAccountModalController } from "./useNewAccountModalController";
 import { BankAccountTypeEnum } from "../../../../../app/entities";
 
 export const NewAccountModal = () => {
-	const {
-		isNewAccountModalOpen,
-		closeNewAccountModal,
-		errors,
-		handleSubmit,
-		register,
-		control,
-		isPending,
-	} = useNewAccountModalController();
+	const { isNewAccountModalOpen, closeNewAccountModal, errors, handleSubmit, register, control, isLoading } =
+		useNewAccountModalController();
 
 	return (
-		<Modal
-			title="Nova conta"
-			open={isNewAccountModalOpen}
-			onClose={closeNewAccountModal}
-		>
+		<Modal title="Nova conta" open={isNewAccountModalOpen} onClose={closeNewAccountModal}>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<span className="text-gray-600 tracking[-0.5] text-sm">
-						Saldo inicial
-					</span>
+					<span className="text-gray-600 tracking[-0.5] text-sm">Saldo inicial</span>
 					<div className="flex items-center gap-2">
 						<span className="text-gray-600 tracking[-0.5] text-lg">R$</span>
 
@@ -38,23 +25,14 @@ export const NewAccountModal = () => {
 							name="initialBalance"
 							defaultValue={0.0}
 							render={({ field: { onChange, value } }) => (
-								<InputCurrency
-									error={errors.initialBalance?.message}
-									onChange={onChange}
-									value={value}
-								/>
+								<InputCurrency error={errors.initialBalance?.message} onChange={onChange} value={value} />
 							)}
 						/>
 					</div>
 				</div>
 
 				<div className="mt-10 flex flex-col gap-4">
-					<Input
-						type="text"
-						placeholder="Nome da conta"
-						error={errors.name?.message}
-						{...register("name")}
-					/>
+					<Input type="text" placeholder="Nome da conta" error={errors.name?.message} {...register("name")} />
 
 					<Controller
 						control={control}
@@ -85,20 +63,12 @@ export const NewAccountModal = () => {
 						name="color"
 						defaultValue="#40C057"
 						render={({ field: { onChange, value } }) => (
-							<ColorsDropdownInput
-								onChange={onChange}
-								error={errors.color?.message}
-								value={value}
-							/>
+							<ColorsDropdownInput onChange={onChange} error={errors.color?.message} value={value} />
 						)}
 					/>
 				</div>
 
-				<Button
-					type="submit"
-					className="w-full mt-6 text-sm"
-					isLoading={isPending}
-				>
+				<Button type="submit" className="w-full mt-6 text-sm" isLoading={isLoading}>
 					Criar
 				</Button>
 			</form>

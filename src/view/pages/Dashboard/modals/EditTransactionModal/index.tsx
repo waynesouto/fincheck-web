@@ -5,28 +5,55 @@ import { Input } from "../../../../components/Input";
 import { InputCurrency } from "../../../../components/InputCurrency";
 import { Modal } from "../../../../components/Modal";
 import { Select } from "../../../../components/Select";
-import { useNewTransactionModalController } from "./useNewTransactionModalController";
+import { useEditTransactionModalController } from "./useEditTransactionModalController";
+import { ITransaction } from "../../../../../app/entities";
+import { ConfirmDeleteModal } from "../../../../components/ConfirmDeleteModal";
+import { TrashIcon } from "../../../../components/icons/TrashIcon";
 
-export const NewTransactionModal = () => {
+type EditTransactionModalProps = {
+	transaction: ITransaction | null;
+	open: boolean;
+	onClose(): void;
+};
+
+export const EditTransactionModal = ({ transaction, open, onClose }: EditTransactionModalProps) => {
 	const {
-		isNewTransactionModalOpen,
-		newTransactionType,
-		closeNewTransactionModal,
 		control,
 		errors,
 		handleSubmit,
 		register,
 		accounts,
 		categories,
-	} = useNewTransactionModalController();
+		isDeleteModalOpen,
+		handleCloseDeleteModal,
+		handleDeleteTransaction,
+		isLoadingDelete,
+		handleOpenDeleteModal,
+	} = useEditTransactionModalController(transaction, onClose);
 
-	const isExpense = newTransactionType === "expense";
+	const isExpense = transaction?.type === "expense";
+
+	if (isDeleteModalOpen) {
+		return (
+			<ConfirmDeleteModal
+				title={`Tem certeza que deseja excluir esta ${isExpense ? "despesa" : "receita"}`}
+				onClose={handleCloseDeleteModal}
+				onConfirm={handleDeleteTransaction}
+				isLoading={isLoadingDelete}
+			/>
+		);
+	}
 
 	return (
 		<Modal
-			title={isExpense ? "Nova despesa" : "Nova receita"}
-			open={isNewTransactionModalOpen}
-			onClose={closeNewTransactionModal}
+			title={isExpense ? "Editar despesa" : "Editar receita"}
+			open={open}
+			onClose={onClose}
+			rightAction={
+				<button onClick={handleOpenDeleteModal}>
+					<TrashIcon className="w-6 h-6 text-red-900" />
+				</button>
+			}
 		>
 			<form onSubmit={handleSubmit}>
 				<div>
@@ -96,7 +123,7 @@ export const NewTransactionModal = () => {
 					/>
 				</div>
 
-				<Button className="w-full mt-6 text-sm">Criar</Button>
+				<Button className="w-full mt-6 text-sm">Salvar</Button>
 			</form>
 		</Modal>
 	);

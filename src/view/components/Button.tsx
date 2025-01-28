@@ -7,14 +7,7 @@ type ButtonProps = {
 	variant?: "danger" | "ghost";
 } & ComponentProps<"button">;
 
-export const Button = ({
-	isLoading,
-	children,
-	disabled,
-	className,
-	variant,
-	...props
-}: ButtonProps) => {
+export const Button = ({ isLoading, children, disabled, className, variant, ...props }: ButtonProps) => {
 	return (
 		<button
 			{...props}
@@ -22,9 +15,8 @@ export const Button = ({
 			className={cn(
 				"bg-teal-900 text-white hover:bg-teal-800 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed px-6 h-12 rounded-2xl font-medium transition-all flex items-center justify-center",
 				variant === "danger" && "bg-red-900 hover:bg-red-800",
-				variant === "ghost" &&
-					"bg-transparent border border-gray-800 text-gray-800 hover:bg-gray-800/5",
-				className
+				variant === "ghost" && "bg-transparent border border-gray-800 text-gray-800 hover:bg-gray-800/5",
+				className,
 			)}
 		>
 			{!isLoading && children}

@@ -1,12 +1,6 @@
 export const InvestmentIcon = () => {
 	return (
-		<svg
-			width="44"
-			height="44"
-			viewBox="0 0 44 44"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
+		<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect x="1" y="1" width="42" height="42" rx="21" fill="#E9ECEF" />
 			<path
 				d="M15.52 30.2735V28.3535"
@@ -24,20 +18,8 @@ export const InvestmentIcon = () => {
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-			<path
-				d="M15.52 20.674V18.7539"
-				stroke="#495057"
-				strokeWidth="1.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-			<path
-				d="M22 26.4342V24.0342"
-				stroke="#495057"
-				strokeWidth="1.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
+			<path d="M15.52 20.674V18.7539" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+			<path d="M22 26.4342V24.0342" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 			<path
 				fillRule="evenodd"
 				clipRule="evenodd"
@@ -47,13 +29,7 @@ export const InvestmentIcon = () => {
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-			<path
-				d="M22 20.1941V14.9141"
-				stroke="#495057"
-				strokeWidth="1.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
+			<path d="M22 20.1941V14.9141" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 			<path
 				d="M28.48 23.5543V21.1543"
 				stroke="#495057"
@@ -77,15 +53,7 @@ export const InvestmentIcon = () => {
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-			<rect
-				x="1"
-				y="1"
-				width="42"
-				height="42"
-				rx="21"
-				stroke="white"
-				strokeWidth="2"
-			/>
+			<rect x="1" y="1" width="42" height="42" rx="21" stroke="white" strokeWidth="2" />
 		</svg>
 	);
 };

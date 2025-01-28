@@ -17,18 +17,12 @@ export const Fab = () => {
 				</DropdownMenu.Trigger>
 
 				<DropdownMenu.Content>
-					<DropdownMenu.Item
-						className="gap-2"
-						onSelect={() => openNewTransactionModal("expense")}
-					>
+					<DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal("expense")}>
 						<CategoryIcon type="expense" />
 						Nova despesa
 					</DropdownMenu.Item>
 
-					<DropdownMenu.Item
-						className="gap-2"
-						onSelect={() => openNewTransactionModal("income")}
-					>
+					<DropdownMenu.Item className="gap-2" onSelect={() => openNewTransactionModal("income")}>
 						<CategoryIcon type="income" />
 						Nova receita
 					</DropdownMenu.Item>

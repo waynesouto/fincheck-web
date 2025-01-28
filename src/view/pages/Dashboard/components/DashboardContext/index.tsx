@@ -19,22 +19,15 @@ type DashboardContextValue = {
 
 export const DashboardContext = createContext({} as DashboardContextValue);
 
-export const DashboardProvider = ({
-	children,
-}: {
-	children: React.ReactNode;
-}) => {
+export const DashboardProvider = ({ children }: { children: React.ReactNode }) => {
 	const [areValuesVisible, setAreValuesVisible] = useState(() => {
 		return localStorage.getItem("@fincheck-are-values-visible") === "true";
 	});
 	const [isNewAccountModalOpen, setIsNewAccountModalOpen] = useState(false);
-	const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
-		useState(false);
-	const [newTransactionType, setNewTransactionType] =
-		useState<TransactionType | null>(null);
+	const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
+	const [newTransactionType, setNewTransactionType] = useState<TransactionType | null>(null);
 	const [isEditAccountModalOpen, setIsEditAccountModalOpen] = useState(false);
-	const [accountBeingEdited, setAccountBeingEdited] =
-		useState<IBankAccount | null>(null);
+	const [accountBeingEdited, setAccountBeingEdited] = useState<IBankAccount | null>(null);
 
 	const toggleValuesVisibility = useCallback(() => {
 		setAreValuesVisible((prevState) => {

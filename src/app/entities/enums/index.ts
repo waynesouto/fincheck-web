@@ -1,2 +1,2 @@
-export * from './IBankAccountType'
-export * from './ITransactionType'
+export * from "./IBankAccountType";
+export * from "./ITransactionType";

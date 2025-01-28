@@ -1,10 +1,7 @@
 import { Logo } from "../../components/Logo";
 import { UserMenu } from "../../components/UserMenu";
 import { Accounts } from "./components/Accounts";
-import {
-	DashboardContext,
-	DashboardProvider,
-} from "./components/DashboardContext";
+import { DashboardContext, DashboardProvider } from "./components/DashboardContext";
 import { Fab } from "./components/Fab";
 import { Transactions } from "./components/Transactions";
 import { EditAccountModal } from "./modals/EditAccountModal";

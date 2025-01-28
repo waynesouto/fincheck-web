@@ -9,6 +9,6 @@ export const useCategories = () => {
 
 	return {
 		categories: data === undefined ? [] : data.categories,
-		isFetching
-	}
-}
+		isFetching,
+	};
+};

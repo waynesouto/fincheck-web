@@ -1,22 +1,23 @@
-import { useMemo, useState } from "react"
-import { useWindowWidth } from "../../../../../app/hooks/useWindowWidth"
-import { useDashboard } from "../DashboardContext/useDashboard"
-import { useBankAccounts } from "../../../../../app/hooks/useBankAccounts"
+import { useMemo, useState } from "react";
+import { useWindowWidth } from "../../../../../app/hooks/useWindowWidth";
+import { useDashboard } from "../DashboardContext/useDashboard";
+import { useBankAccounts } from "../../../../../app/hooks/useBankAccounts";
 
 export const useAccountsController = () => {
-	const windowWidth = useWindowWidth()
-	const { areValuesVisible, toggleValuesVisibility, openNewAccountModal } = useDashboard()
+	const windowWidth = useWindowWidth();
+	const { areValuesVisible, toggleValuesVisibility, openNewAccountModal } = useDashboard();
 
 	const [slider, setSliderState] = useState({
 		isBeginning: true,
-		isEnd: false
-	})
+		isEnd: false,
+	});
 
-	const {accounts, isFetching} = useBankAccounts()
+	const { accounts, isFetching } = useBankAccounts();
 
-	const currentBalance = useMemo((
-	) => accounts.reduce((total, account) => total + account.currentBalance, 0), [accounts])
-
+	const currentBalance = useMemo(
+		() => accounts.reduce((total, account) => total + account.currentBalance, 0),
+		[accounts],
+	);
 
 	return {
 		slider,
@@ -27,6 +28,6 @@ export const useAccountsController = () => {
 		openNewAccountModal,
 		isLoading: isFetching,
 		accounts,
-		currentBalance
-	}
-}
+		currentBalance,
+	};
+};

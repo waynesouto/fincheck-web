@@ -12,7 +12,7 @@ import { notification } from "../../../../../app/utils/notification";
 const schema = z.object({
 	value: z.number().nonnegative("Informe o valor"),
 	description: z.string().nonempty("Informe a descrição"),
-	categoryId: z.string().nonempty("Informe a categoria"),
+	categoryId: z.string().nullable(),
 	bankAccountId: z.string().nonempty("Informe a conta bancária"),
 	date: z.date(),
 });
@@ -20,11 +20,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export const useNewTransactionModalController = () => {
-	const {
-		isNewTransactionModalOpen,
-		newTransactionType,
-		closeNewTransactionModal,
-	} = useDashboard();
+	const { isNewTransactionModalOpen, newTransactionType, closeNewTransactionModal } = useDashboard();
 
 	const {
 		register,
@@ -35,33 +31,33 @@ export const useNewTransactionModalController = () => {
 		resolver: zodResolver(schema),
 	});
 
-	const queryClient = useQueryClient()
-	const {accounts} = useBankAccounts()
-	const {categories} = useCategories()
-	const {isPending, mutateAsync, reset} = useMutation({
-		mutationFn: transactionsService.create
-	})
+	const queryClient = useQueryClient();
+	const { accounts } = useBankAccounts();
+	const { categories } = useCategories();
+	const { isPending, mutateAsync, reset } = useMutation({
+		mutationFn: transactionsService.create,
+	});
 
 	const handleSubmit = hookFormSubmit(async (data) => {
 		try {
-					await mutateAsync({
-						...data,
-						 type: newTransactionType!,
-					});
+			await mutateAsync({
+				...data,
+				type: newTransactionType!,
+			});
 
-					queryClient.invalidateQueries({queryKey: ['transactions']})
-					notification(`${newTransactionType === 'income' ? 'Receita' : "Despesa"} cadastrada com sucesso`, 'success')
-					closeNewTransactionModal()
-					reset()
-				} catch (err) {
-					notification("Erro ao cadastrar transação " + err, "error");
-				}
+			queryClient.invalidateQueries({ queryKey: ["transactions"] });
+			queryClient.invalidateQueries({ queryKey: ["bankAccounts"] });
+			notification(`${newTransactionType === "income" ? "Receita" : "Despesa"} cadastrada com sucesso`, "success");
+			closeNewTransactionModal();
+			reset();
+		} catch (err) {
+			notification("Erro ao cadastrar transação " + err, "error");
+		}
 	});
 
 	const filterCategories = useMemo(() => {
-		return categories.filter((category) => category.type === newTransactionType)
-	}, [categories, newTransactionType])
-
+		return categories.filter((category) => category.type === newTransactionType);
+	}, [categories, newTransactionType]);
 
 	return {
 		isNewTransactionModalOpen,
@@ -73,6 +69,6 @@ export const useNewTransactionModalController = () => {
 		handleSubmit,
 		accounts,
 		categories: filterCategories,
-		isPending
+		isLoading: isPending,
 	};
 };

@@ -7,11 +7,7 @@ type InputCurrencyProps = {
 	onChange?(value: number): void;
 };
 
-export const InputCurrency = ({
-	error,
-	value,
-	onChange,
-}: InputCurrencyProps) => {
+export const InputCurrency = ({ error, value, onChange }: InputCurrencyProps) => {
 	return (
 		<div>
 			<NumericFormat

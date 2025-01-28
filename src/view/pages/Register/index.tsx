@@ -4,7 +4,7 @@ import { Input } from "@/view/components/ui/input";
 import { useRegisterController } from "./useRegisterController";
 
 export const Register = () => {
-	const { handleSubmit, register, errors, isPending } = useRegisterController();
+	const { handleSubmit, register, errors, isLoading } = useRegisterController();
 
 	return (
 		<>
@@ -43,7 +43,7 @@ export const Register = () => {
 					{...register("password")}
 				/>
 
-				<Button type="submit" className="mt-2 w-full" isLoading={isPending}>
+				<Button type="submit" className="mt-2 w-full" isLoading={isLoading}>
 					Criar conta
 				</Button>
 

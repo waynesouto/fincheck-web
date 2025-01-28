@@ -1,26 +1,26 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-	withCredentials: true
+	baseURL: import.meta.env.VITE_API_URL,
+	withCredentials: true,
 });
 
 api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    return Promise.reject(error.response?.data?.body ?? "Erro desconhecido");
-  }
+	(response) => response,
+	(error) => {
+		return Promise.reject(error.response?.data?.body ?? "Erro desconhecido");
+	},
 );
 
 export type ApiResponse<T> =
-  | {
-    process: 'success'
-    body: T
-  }
-  | {
-    process: 'failed'
-    body: string
-  }
+	| {
+			process: "success";
+			body: T;
+	  }
+	| {
+			process: "failed";
+			body: string;
+	  };
 
 // export const apiInterceptor = (api_instance: AxiosInstance) => {
 //   return api_instance.interceptors.response.use(
@@ -51,4 +51,4 @@ export type ApiResponse<T> =
 //   )
 // }
 
-export { api }
+export { api };
