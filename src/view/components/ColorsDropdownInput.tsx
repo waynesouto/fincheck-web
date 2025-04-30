@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { cn } from "../../app/utils/cn";
 import { DropdownMenu } from "./DropdownMenu";
-import { ErrorLabel } from "./ErrorLabel";
+import { ErrorLabel } from "./error-label";
 import { ColorIcon } from "./icons/ColorIcon";
 import { useState } from "react";
 
@@ -56,7 +56,7 @@ export const ColorsDropdownInput = ({ error, className, value, onChange }: Color
 						className={cn(
 							"bg-white w-full rounded-lg border border-gray-500 px-3 h-[52px] text-gray-700 transition-all outline-none focus:border-gray-800 text-left relative",
 							error && "!border-red-900",
-							className,
+							className
 						)}
 					>
 						Cor

@@ -1,5 +1,5 @@
 import { NumericFormat } from "react-number-format";
-import { ErrorLabel } from "./ErrorLabel";
+import { ErrorLabel } from "./error-label";
 
 type InputCurrencyProps = {
 	error?: string;
@@ -23,7 +23,7 @@ export const InputCurrency = ({ error, value, onChange }: InputCurrencyProps) =>
 						event.target.value = "0";
 					}
 				}}
-				className="text-gray-800 text-[32px] font-bold tracking-[-1px] outline-none w-full"
+				className="text-3xl font-bold w-full bg-transparent outline-none transition-colors placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
 			/>
 
 			{error && <ErrorLabel error={error} />}

@@ -1,6 +1,6 @@
 import { TrashIcon } from "./icons/TrashIcon";
 import { Modal } from "./Modal";
-import { Button } from "./Button";
+import { Button } from "./ui/button";
 
 type ConfirmDeleteModalProps = {
 	title: string;
@@ -22,7 +22,7 @@ export const ConfirmDeleteModal = ({ title, description, isLoading, onClose, onC
 				{description && <p className="tracking-[-0.5px] text-gray-800 font-light">{description}</p>}
 			</div>
 			<div className="mt-10 space-y-4">
-				<Button className="w-full" variant="danger" onClick={onConfirm} isLoading={isLoading}>
+				<Button className="w-full" variant="destructive" onClick={onConfirm} isLoading={isLoading}>
 					Sim, desejo excluir
 				</Button>
 

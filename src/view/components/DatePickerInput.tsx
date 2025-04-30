@@ -1,6 +1,6 @@
 import { cn } from "../../app/utils/cn";
 import { formatDate } from "../../app/utils/date";
-import { ErrorLabel } from "./ErrorLabel";
+import { ErrorLabel } from "./error-label";
 import { useState } from "react";
 import { Popover } from "./Popover";
 import { DatePicker } from "./DatePicker";
@@ -29,7 +29,7 @@ export const DatePickerInput = ({ className, error, value, onChange }: DatePicke
 						className={cn(
 							"bg-white w-full rounded-lg border border-gray-500 px-3 h-[52px] text-gray-700 transition-all outline-none focus:border-gray-800 text-left relative pt-4",
 							error && "!border-red-900",
-							className,
+							className
 						)}
 					>
 						<span className="absolute text-gray-700 text-xs left-[13px] top-2 pointer-events-none">Data</span>
