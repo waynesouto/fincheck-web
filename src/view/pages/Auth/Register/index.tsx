@@ -1,48 +1,43 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/view/components/ui/button";
-import { useLoginController } from "./useLoginController";
 import { Input } from "@/view/components/ui/input";
+import { useRegisterController } from "./useRegisterController";
 
-export const Login = () => {
-	const { handleSubmit, register, errors, isLoading } = useLoginController();
+export const Register = () => {
+	const { handleSubmit, register, errors, isLoading } = useRegisterController();
 
 	return (
 		<>
 			<header className="flex flex-col items-center gap-2 text-center">
-				<h1 className="text-2xl font-bold">Entre em sua conta</h1>
+				<h1 className="text-2xl font-bold">Crie sua conta</h1>
 
 				<p className="text-balance text-sm text-muted-foreground">
-					<span>Novo por aqui? </span>
-					<Link to="/register" className="underline underline-offset-4">
-						Crie sua conta
+					<span>Já possui uma conta? </span>
+					<Link to="/login" className="underline underline-offset-4">
+						Fazer login
 					</Link>
 				</p>
 			</header>
 
 			<form className="grid gap-6 mt-2" onSubmit={handleSubmit}>
+				<Input label="Nome" type="text" placeholder="John Doe" error={errors.name?.message} {...register("name")} />
+
 				<Input
-					type="email"
 					label="Email"
+					type="email"
 					placeholder="mail@example.com"
 					error={errors.email?.message}
 					{...register("email")}
 				/>
 
-				<Input
-					label="Senha"
-					type="password"
-					error={errors.password?.message}
-					{...register("password")}
-				/>
+				<Input label="Senha" type="password" error={errors.password?.message} {...register("password")} />
 
 				<Button type="submit" className="mt-2 w-full" isLoading={isLoading}>
-					Entrar
+					Criar conta
 				</Button>
 
 				<div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
-					<span className="relative z-10 bg-background px-2 text-muted-foreground">
-						Ou
-					</span>
+					<span className="relative z-10 bg-background px-2 text-muted-foreground">Ou</span>
 				</div>
 
 				<Button variant="outline" className="w-full">

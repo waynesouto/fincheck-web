@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { AuthLayout } from "../view/layouts/AuthLayout";
-import { Dashboard } from "../view/pages/Dashboard";
-import { Login } from "../view/pages/Login";
-import { Register } from "../view/pages/Register";
-import { AuthGuard } from "./AuthGuard";
+import { AuthLayout } from "@/view/layouts/auth-layout";
+import { Home } from "@/view/pages/Home";
+import { Login } from "@/view/pages/Auth/Login";
+import { Register } from "@/view/pages/Auth/Register";
+import { AuthGuard } from "@/Router/auth-guard";
+import { DashboardLayout } from "@/view/layouts/dashboard-layout";
 
 export const Router = () => {
 	return (
@@ -17,7 +18,10 @@ export const Router = () => {
 				</Route>
 
 				<Route element={<AuthGuard isPrivate />}>
-					<Route path="/" element={<Dashboard />} />
+					<Route path="/" element={<DashboardLayout />}>
+						<Route index element={<Home />} />
+						<Route path="/categories" />
+					</Route>
 				</Route>
 			</Routes>
 		</BrowserRouter>

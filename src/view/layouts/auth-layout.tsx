@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { Logo } from "../components/Logo";
-import { Canvas } from "@react-three/fiber";
-import { Blob } from "@/view/components/blob";
+import { Logo } from "@/view/components/logo";
+import { Cubic } from "@/view/components/ui/cubic";
 
 export const AuthLayout = () => {
 	return (
@@ -18,10 +17,8 @@ export const AuthLayout = () => {
 				</div>
 			</div>
 
-			<div className="relative hidden lg:block">
-				<Canvas camera={{ position: [0.0, 0.0, 8.0] }}>
-					<Blob />
-				</Canvas>
+			<div className="hidden lg:block">
+				<Cubic />
 			</div>
 		</div>
 	);
